@@ -160,13 +160,13 @@ PyLoggerWriteLog(PyLogger *logger)
     if (!logger->log.commit) {
         logger->log.commit = "";
     }
-    fprintf(logger->log_file, "EDIT:\n");
+    fprintf(logger->log_file, "EDIT:");
     for (edit = (PyLoggerEdit*)utarray_front(edits);
          edit;
          edit = (PyLoggerEdit*)utarray_next(edits, edit)) {
-        fprintf(logger->log_file, "%s -> %s\n", edit->before, edit->after);
+        fprintf(logger->log_file, "%s -> %s\t", edit->before, edit->after);
     }
-    fprintf(logger->log_file, "COMMIT: %s\n\n", logger->log.commit);
+    fprintf(logger->log_file, "COMMIT: %s\n", logger->log.commit);
     fflush(logger->log_file);
 }
 
