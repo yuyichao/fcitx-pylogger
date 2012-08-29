@@ -4,7 +4,7 @@ project(fcitx-pylogger)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-find_package(Fcitx REQUIRED)
+find_package(Fcitx 4.2.6 REQUIRED)
 
 # uninstall target
 configure_file(
