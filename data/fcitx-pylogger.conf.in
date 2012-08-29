@@ -6,4 +6,4 @@ Category=Module
 Enabled=True
 Library=fcitx-pylogger.so
 Type=SharedLibrary
-Priority=20
+Priority=30

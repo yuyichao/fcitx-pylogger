@@ -29,8 +29,22 @@ typedef struct {
 } PyLoggerConfig;
 
 typedef struct {
+    char *before;
+    char *after;
+} PyLoggerEdit;
+
+typedef struct {
+    UT_array edit;
+    const char *commit;
+} PyLoggerLog;
+
+typedef struct {
     PyLoggerConfig config;
     FcitxInstance* owner;
+    boolean busy;
+    boolean edited;
+    PyLoggerLog log;
+    FILE *log_file;
 } PyLogger;
 
 CONFIG_BINDING_DECLARE(PyLoggerConfig);
