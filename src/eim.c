@@ -72,8 +72,22 @@ check_im_type(PyLogger *logger)
     FcitxIM *im = FcitxInstanceGetCurrentIM(logger->owner);
     if (!im)
         return 0;
-    if (!strcmp(im->uniqueName, "pinyin"))
+    if (strcmp(im->uniqueName, "pinyin") == 0 ||
+        strcmp(im->uniqueName, "pinyin-libpinyin") == 0 ||
+        strcmp(im->uniqueName, "googlepinyin") == 0)
         return 1;
+    if (strcmp(im->uniqueName, "sunpinyin") == 0) {
+        FcitxModuleFunctionArg arg;
+        boolean sp = false;
+        char *str;
+        arg.args[0] = "";
+        arg.args[1] = &sp;
+        str = FcitxModuleInvokeFunctionByName(im->owner->owner,
+                                              "fcitx-sunpinyin", 0, arg);
+        if (str)
+            free(str);
+        return sp ? 0 : 1;
+    }
     return 0;
 }
 
