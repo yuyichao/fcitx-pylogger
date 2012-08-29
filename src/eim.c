@@ -129,14 +129,16 @@ FcitxPyLoggerPreHook(void *arg, FcitxKeySym sym, unsigned int state,
         PyLoggerReset(logger);
         return false;
     }
-    if (FcitxHotkeyIsHotKey(sym, state, FCITX_BACKSPACE) ||
+    boolean is_backspace = false;
+    if ((FcitxHotkeyIsHotKey(sym, state, FCITX_BACKSPACE) &&
+         (is_backspace = true)) ||
         FcitxHotkeyIsHotKey(sym, state, FCITX_DELETE)) {
         char *before;
         char *after;
         before = PyLoggerGetPreedit(logger);
         if (!before)
             return false;
-        if (!*before) {
+        if (!*before || (is_backspace && *fcitx_utils_get_ascii_end(before))) {
             free(before);
             return false;
         }
