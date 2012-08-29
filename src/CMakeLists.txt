@@ -5,6 +5,7 @@ include_directories(${PROJECT_BINARY_DIR})
 
 set(fcitx_pylogger_sources
   eim.c
+  config.c
   )
 
 fcitx_add_addon(fcitx-pylogger ${fcitx_pylogger_sources})

@@ -42,7 +42,7 @@ static void FcitxPyLoggerDestroy(void *arg);
 static void FcitxPyLoggerReloadConfig(void *arg);
 static void PyLoggerReset(PyLogger *logger);
 
-FCITX_DEFINE_PLUGIN(fcitx_pinyin_enhance, module, FcitxModule) = {
+FCITX_DEFINE_PLUGIN(fcitx_pylogger, module, FcitxModule) = {
     .Create = FcitxPyLoggerCreate,
     .Destroy = FcitxPyLoggerDestroy,
     .SetFD = NULL,
@@ -124,8 +124,14 @@ FcitxPyLoggerPreHook(void *arg, FcitxKeySym sym, unsigned int state,
         FcitxHotkeyIsHotKey(sym, state, FCITX_DELETE)) {
         char *before;
         char *after;
-        logger->edited = true;
         before = PyLoggerGetPreedit(logger);
+        if (!before)
+            return false;
+        if (!*before) {
+            free(before);
+            return false;
+        }
+        logger->edited = true;
         logger->busy = true;
         *retval = FcitxInstanceProcessKey(logger->owner, FCITX_PRESS_KEY,
                                           time(NULL), sym, state);
@@ -161,6 +167,7 @@ PyLoggerWriteLog(PyLogger *logger)
         fprintf(logger->log_file, "%s -> %s\n", edit->before, edit->after);
     }
     fprintf(logger->log_file, "COMMIT: %s\n\n", logger->log.commit);
+    fflush(logger->log_file);
 }
 
 static char*
@@ -205,7 +212,7 @@ FcitxPyLoggerCreate(FcitxInstance *instance)
     utarray_init(&logger->log.edit, &pyedit_icd);
     logger->log.commit = NULL;
     logger->log_file = FcitxXDGGetFileUserWithPrefix("pylog", "pyedit.log",
-                                                     "w", NULL);
+                                                     "a", NULL);
 
     if (!(logger->log_file && PyLoggerLoadConfig(&logger->config))) {
         FcitxPyLoggerDestroy(logger);
@@ -232,6 +239,7 @@ FcitxPyLoggerDestroy(void *arg)
 {
     PyLogger *logger = (PyLogger*)arg;
     PyLoggerReset(logger);
+    fclose(logger->log_file);
     utarray_done(&logger->log.edit);
     free(arg);
 }

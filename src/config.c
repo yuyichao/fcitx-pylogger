@@ -20,5 +20,5 @@
 
 #include "eim.h"
 
-CONFIG_BINDING_BEGIN(FcitxPyLoggerConfig)
+CONFIG_BINDING_BEGIN(PyLoggerConfig)
 CONFIG_BINDING_END()
