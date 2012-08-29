@@ -124,7 +124,7 @@ PyLoggerEditPush(PyLogger *logger, char *before, char *after)
         !strcmp(last_edit->after, before)) {
         free(last_edit->after);
         last_edit->after = after;
-        fcitx_utils_free(before);
+        free(before);
         return;
     }
     new_edit.before = before;
@@ -166,6 +166,7 @@ FcitxPyLoggerPreHook(void *arg, FcitxKeySym sym, unsigned int state,
         } else {
             *retval = IRV_FLAG_BLOCK_FOLLOWING_PROCESS;
         }
+        /* have been reset */
         if (!logger->edited) {
             fcitx_utils_free(before);
             return true;
