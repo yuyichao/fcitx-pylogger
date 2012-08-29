@@ -1,0 +1,9 @@
+[Addon]
+Name=fcitx-pylogger
+_GeneralName=Pinyin Logger
+_Comment=Logger for Fcitx-Pinyin
+Category=Module
+Enabled=True
+Library=fcitx-pylogger.so
+Type=SharedLibrary
+Priority=20
