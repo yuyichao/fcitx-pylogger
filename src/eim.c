@@ -77,12 +77,21 @@ check_im_type(PyLogger *logger)
     return 0;
 }
 
-static char *
+static char*
 PyLoggerGetPreedit(PyLogger *logger)
 {
     FcitxInputState *input;
     input = FcitxInstanceGetInputState(logger->owner);
     return FcitxUIMessagesToCString(FcitxInputStateGetPreedit(input));
+}
+
+static void
+PyLoggerUpdateRawBuffer(PyLogger *logger)
+{
+    FcitxInputState *input;
+    input = FcitxInstanceGetInputState(logger->owner);
+    fcitx_utils_free(logger->log.raw_buff);
+    logger->log.raw_buff = strdup(FcitxInputStateGetRawInputBuffer(input));
 }
 
 static void
@@ -149,6 +158,7 @@ FcitxPyLoggerPreHook(void *arg, FcitxKeySym sym, unsigned int state,
         PyLoggerEditPush(logger, before, after);
         return true;
     }
+    PyLoggerUpdateRawBuffer(logger);
     return false;
 }
 
@@ -166,6 +176,7 @@ PyLoggerWriteLog(PyLogger *logger)
          edit = (PyLoggerEdit*)utarray_next(edits, edit)) {
         fprintf(logger->log_file, "%s -> %s\t", edit->before, edit->after);
     }
+    fprintf(logger->log_file, "RAW: %s\t", logger->log.raw_buff);
     fprintf(logger->log_file, "COMMIT: %s\n", logger->log.commit);
     fflush(logger->log_file);
 }
@@ -230,6 +241,8 @@ static void
 PyLoggerReset(PyLogger *logger)
 {
     logger->edited = false;
+    fcitx_utils_free(logger->log.raw_buff);
+    logger->log.raw_buff = NULL;
     utarray_clear(&logger->log.edit);
     logger->log.commit = NULL;
 }

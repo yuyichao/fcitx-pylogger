@@ -36,6 +36,7 @@ typedef struct {
 typedef struct {
     UT_array edit;
     const char *commit;
+    char *raw_buff;
 } PyLoggerLog;
 
 typedef struct {
