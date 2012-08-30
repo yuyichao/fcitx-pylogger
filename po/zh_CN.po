@@ -17,10 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/yuyichao/programming/fcitx-pylogger/build/po/tmp/fcitx-pylogger.conf.in.h:1
-msgid "Pinyin Logger"
-msgstr "记录拼音输入"
-
 #: /home/yuyichao/programming/fcitx-pylogger/build/po/tmp/fcitx-pylogger.conf.in.h:2
 msgid "Collect data to improve pinyin"
 msgstr "收集信息以改进拼音输入法"
+
+#: /home/yuyichao/programming/fcitx-pylogger/build/po/tmp/fcitx-pylogger.conf.in.h:1
+msgid "Pinyin Logger"
+msgstr "记录拼音输入"
