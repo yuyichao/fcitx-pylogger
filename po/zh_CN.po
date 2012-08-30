@@ -1,0 +1,26 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2012 Yichao Yu
+# This file is distributed under the same license as the fcitx-pylogger package.
+# Yichao Yu <yyc1992@gmail.com>, 2012.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-30 11:33-0400\n"
+"PO-Revision-Date: 2012-08-30 11:36-0400\n"
+"Last-Translator: Yichao Yu <yyc1992@gmail.com>\n"
+"Language-Team: Chinese Simplified <fcitx-dev@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/yuyichao/programming/fcitx-pylogger/build/po/tmp/fcitx-pylogger.conf.in.h:1
+msgid "Pinyin Logger"
+msgstr "记录拼音输入"
+
+#: /home/yuyichao/programming/fcitx-pylogger/build/po/tmp/fcitx-pylogger.conf.in.h:2
+msgid "Collect data to improve pinyin"
+msgstr "收集信息以改进拼音输入法"

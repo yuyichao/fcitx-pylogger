@@ -1,7 +1,7 @@
 [Addon]
 Name=fcitx-pylogger
 _GeneralName=Pinyin Logger
-_Comment=Logger for Fcitx-Pinyin
+_Comment=Collect data to improve pinyin
 Category=Module
 Enabled=True
 Library=fcitx-pylogger.so

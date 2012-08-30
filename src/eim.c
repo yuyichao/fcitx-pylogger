@@ -188,7 +188,7 @@ PyLoggerWriteLog(PyLogger *logger)
           fcitx_utils_get_ascii_end(logger->log.commit))) {
         return;
     }
-    fprintf(logger->log_file, "EDIT:");
+    fprintf(logger->log_file, "EDIT: ");
     for (edit = (PyLoggerEdit*)utarray_front(edits);
          edit;
          edit = (PyLoggerEdit*)utarray_next(edits, edit)) {
