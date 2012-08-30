@@ -185,7 +185,7 @@ PyLoggerWriteLog(PyLogger *logger)
     UT_array *edits = &logger->log.edit;
     PyLoggerEdit *edit;
     if (!(logger->log.commit &&
-          fcitx_utils_get_ascii_end(logger->log.commit))) {
+          *fcitx_utils_get_ascii_end(logger->log.commit))) {
         return;
     }
     fprintf(logger->log_file, "EDIT: ");
