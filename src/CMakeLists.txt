@@ -8,4 +8,7 @@ set(fcitx_pylogger_sources
   config.c
   )
 
-fcitx_add_addon(fcitx-pylogger ${fcitx_pylogger_sources})
+fcitx_add_addon_full(pylogger
+  SOURCES ${fcitx_pylogger_sources}
+  DESC_SRC ../data/fcitx-pylogger.desc
+  CONF_SRC ../data/fcitx-pylogger.conf)

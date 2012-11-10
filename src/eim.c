@@ -248,7 +248,6 @@ FcitxPyLoggerCreate(FcitxInstance *instance)
         return NULL;
     }
 
-
     FcitxInstanceRegisterPreInputFilter(logger->owner, key_hook);
     FcitxInstanceRegisterCommitFilter(logger->owner, commit_hook);
     FcitxInstanceRegisterResetInputHook(logger->owner, reset_hook);

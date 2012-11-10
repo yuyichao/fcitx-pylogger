@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-30 11:33-0400\n"
+"POT-Creation-Date: 2012-11-10 10:52-0500\n"
 "PO-Revision-Date: 2012-08-30 11:36-0400\n"
 "Last-Translator: Yichao Yu <yyc1992@gmail.com>\n"
 "Language-Team: Chinese Simplified <fcitx-dev@googlegroups.com>\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/yuyichao/programming/fcitx-pylogger/build/po/tmp/fcitx-pylogger.conf.in.h:2
+#: data/fcitx-pylogger.conf.in:4
 msgid "Collect data to improve pinyin"
 msgstr "收集信息以改进拼音输入法"
 
-#: /home/yuyichao/programming/fcitx-pylogger/build/po/tmp/fcitx-pylogger.conf.in.h:1
+#: data/fcitx-pylogger.conf.in:3
 msgid "Pinyin Logger"
 msgstr "记录拼音输入"
