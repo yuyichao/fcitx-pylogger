@@ -1,10 +1,9 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.6)
 project(fcitx-pylogger)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 find_package(Fcitx 4.2.7 REQUIRED)
-find_package(Gettext REQUIRED)
 
 _fcitx_add_uninstall_target()
 
